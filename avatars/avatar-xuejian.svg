@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="avatar-xuejian-title">
+  <title id="avatar-xuejian-title">作者「雪见」的头像：浅棕长发、白色耳罩与浅蓝外套</title>
+  <defs>
+    <clipPath id="avatar-xuejian-clip"><circle cx="60" cy="60" r="58"/></clipPath>
+    <linearGradient id="avatar-xuejian-bg" x1="0" y1="0" x2="0.2" y2="1">
+      <stop offset="0" stop-color="#f6fdff"/>
+      <stop offset="1" stop-color="#cfe6f2"/>
+    </linearGradient>
+  </defs>
+  <g clip-path="url(#avatar-xuejian-clip)">
+    <rect width="120" height="120" fill="url(#avatar-xuejian-bg)"/>
+    <circle cx="24" cy="22" r="20" fill="#ffffff" opacity="0.42"/>
+    <circle cx="104" cy="78" r="26" fill="#ffffff" opacity="0.2"/>
+    <circle cx="90" cy="30" r="2.2" fill="#ffffff" opacity="0.85"/>
+    <path d="M12 124c0-24 21-38 48-38s48 14 48 38z" fill="#7fa9bf"/>
+    <path d="M43 85c5 9 11 13 17 13s12-4 17-13c5 3 7 8 7 14v25H36v-25c0-6 2-11 7-14z" fill="#e4f2fa"/>
+    <path d="M47 92c4 6 8 9 13 9s9-3 13-9" fill="none" stroke="#b7d8e8" stroke-width="2" stroke-linecap="round"/>
+    <rect x="52" y="66" width="16" height="22" rx="8" fill="#f3ccb5"/>
+    <path d="M33 57c0-23 12-36 27-36s27 13 27 36v29c0 8-6 14-14 14h-3V76H50v24h-3c-8 0-14-6-14-14z" fill="#a58e74"/>
+    <ellipse cx="60" cy="55" rx="22" ry="24" fill="#f8dac7"/>
+    <path d="M37 50c1-16 10-25 23-25 12 0 21 7 24 19-6-5-14-7-23-7-10 0-18 4-24 13z" fill="#b59c80"/>
+    <path d="M38 44c-3 15-2 28 2 39l-6 1c-4-13-5-27-1-40z" fill="#a58e74"/>
+    <path d="M82 44c3 15 2 28-2 39l6 1c4-13 5-27 1-40z" fill="#a58e74"/>
+    <path d="M37 54c0-15 10-25 23-25s23 10 23 25" fill="none" stroke="#f7fbfd" stroke-width="4.5" stroke-linecap="round"/>
+    <circle cx="35.5" cy="58" r="7.6" fill="#f7fbfd"/>
+    <circle cx="84.5" cy="58" r="7.6" fill="#f7fbfd"/>
+    <circle cx="35.5" cy="58" r="4.2" fill="#dceff8"/>
+    <circle cx="84.5" cy="58" r="4.2" fill="#dceff8"/>
+    <circle cx="50" cy="57" r="2.4" fill="#4a5d52"/>
+    <circle cx="70" cy="57" r="2.4" fill="#4a5d52"/>
+    <circle cx="50.6" cy="56.3" r="0.8" fill="#ffffff"/>
+    <circle cx="70.6" cy="56.3" r="0.8" fill="#ffffff"/>
+    <path d="M46.5 47c2.8-1.8 5.4-1.8 8 0" fill="none" stroke="#8a745c" stroke-width="1.7" stroke-linecap="round"/>
+    <path d="M65.5 47c2.8-1.8 5.4-1.8 8 0" fill="none" stroke="#8a745c" stroke-width="1.7" stroke-linecap="round"/>
+    <path d="M57 67.6c2 1.7 4 1.7 6 0" fill="none" stroke="#c58a7d" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M60 59v4.4" fill="none" stroke="#dba994" stroke-width="1.2" stroke-linecap="round"/>
+    <ellipse cx="45" cy="64.5" rx="4" ry="2.4" fill="#eaa896" opacity="0.38"/>
+    <ellipse cx="75" cy="64.5" rx="4" ry="2.4" fill="#eaa896" opacity="0.38"/>
+    <path d="M40 42c1.5-4 4-6.5 7-7.5" fill="none" stroke="#ffffff" stroke-width="1.4" stroke-linecap="round" opacity="0.7"/>
+  </g>
+  <circle cx="60" cy="60" r="58" fill="none" stroke="#ffffff" stroke-width="3" opacity="0.92"/>
+</svg>

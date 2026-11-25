@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="avatar-shuo-title">
+  <title id="avatar-shuo-title">作者「朔」的头像：深蓝长发、围巾与金色眼睛</title>
+  <defs>
+    <clipPath id="avatar-shuo-clip"><circle cx="60" cy="60" r="58"/></clipPath>
+    <linearGradient id="avatar-shuo-bg" x1="0" y1="0" x2="0.2" y2="1">
+      <stop offset="0" stop-color="#f2fbff"/>
+      <stop offset="1" stop-color="#c7e3f3"/>
+    </linearGradient>
+    <linearGradient id="avatar-shuo-coat" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#31536b"/>
+      <stop offset="1" stop-color="#1d3a4e"/>
+    </linearGradient>
+  </defs>
+  <g clip-path="url(#avatar-shuo-clip)">
+    <rect width="120" height="120" fill="url(#avatar-shuo-bg)"/>
+    <circle cx="98" cy="20" r="22" fill="#ffffff" opacity="0.38"/>
+    <circle cx="16" cy="88" r="28" fill="#ffffff" opacity="0.24"/>
+    <circle cx="93" cy="89" r="3.2" fill="#ffffff" opacity="0.7"/>
+    <circle cx="26" cy="30" r="2.2" fill="#ffffff" opacity="0.8"/>
+    <path d="M12 124c0-24 21-38 48-38s48 14 48 38z" fill="url(#avatar-shuo-coat)"/>
+    <path d="M42 84c4 10 10 15 18 15s14-5 18-15l8 5c3 13 2 22 0 30H34c-2-8-3-17 0-30z" fill="#3d7190"/>
+    <path d="M46 90c4 7 9 11 14 11s10-4 14-11" fill="none" stroke="#d8ecf7" stroke-width="2.4" stroke-linecap="round" opacity="0.75"/>
+    <rect x="52" y="66" width="16" height="22" rx="8" fill="#efc6ae"/>
+    <path d="M33 58c0-24 12-39 27-39s27 15 27 39v26c0 9-6 15-15 15h-4V76H48v23h-4c-9 0-15-6-15-15z" fill="#263443"/>
+    <ellipse cx="60" cy="55" rx="22.5" ry="24.5" fill="#f6d5c1"/>
+    <path d="M36 52c1-18 10-28 24-28 10 0 19 6 23 17-6-5-13-7-21-7-11 0-19 5-26 18z" fill="#2c3b4b"/>
+    <path d="M39 47c-3 15-3 27 1 38l-6 2c-4-13-4-27 0-40z" fill="#2c3b4b"/>
+    <path d="M81 47c3 15 3 27-1 38l6 2c4-13 4-27 0-40z" fill="#2c3b4b"/>
+    <ellipse cx="51" cy="56.6" rx="3.4" ry="4.1" fill="#fffaf3"/>
+    <ellipse cx="69" cy="56.6" rx="3.4" ry="4.1" fill="#fffaf3"/>
+    <circle cx="51.4" cy="57" r="2.3" fill="#b8863f"/>
+    <circle cx="68.6" cy="57" r="2.3" fill="#b8863f"/>
+    <circle cx="51.4" cy="57" r="1.1" fill="#2e2117"/>
+    <circle cx="68.6" cy="57" r="1.1" fill="#2e2117"/>
+    <circle cx="50.5" cy="55.9" r="0.9" fill="#ffffff"/>
+    <circle cx="67.7" cy="55.9" r="0.9" fill="#ffffff"/>
+    <path d="M47 47.5c3-2 6-2 9 0" fill="none" stroke="#4c3a2e" stroke-width="1.7" stroke-linecap="round"/>
+    <path d="M64 47.5c3-2 6-2 9 0" fill="none" stroke="#4c3a2e" stroke-width="1.7" stroke-linecap="round"/>
+    <path d="M60 59v4.5" fill="none" stroke="#d9a48c" stroke-width="1.2" stroke-linecap="round"/>
+    <path d="M56.6 67.6c2.2 2 4.6 2 6.8 0" fill="none" stroke="#c08578" stroke-width="1.8" stroke-linecap="round"/>
+    <ellipse cx="45" cy="64" rx="4.2" ry="2.6" fill="#eaa896" opacity="0.42"/>
+    <ellipse cx="75" cy="64" rx="4.2" ry="2.6" fill="#eaa896" opacity="0.42"/>
+    <path d="M47 36.5c3.4 1.2 6.6 1.8 9.8 1.8" fill="none" stroke="#d7e9f4" stroke-width="1.2" opacity="0.5"/>
+  </g>
+  <circle cx="60" cy="60" r="58" fill="none" stroke="#ffffff" stroke-width="3" opacity="0.92"/>
+</svg>

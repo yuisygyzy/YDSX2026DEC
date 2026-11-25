@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="avatar-ayao-title">
+  <title id="avatar-ayao-title">作者「阿杳」的头像：墨绿短发、圆框眼镜与浅蓝围巾</title>
+  <defs>
+    <clipPath id="avatar-ayao-clip"><circle cx="60" cy="60" r="58"/></clipPath>
+    <linearGradient id="avatar-ayao-bg" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="#f4fcff"/>
+      <stop offset="1" stop-color="#cbe8f5"/>
+    </linearGradient>
+  </defs>
+  <g clip-path="url(#avatar-ayao-clip)">
+    <rect width="120" height="120" fill="url(#avatar-ayao-bg)"/>
+    <circle cx="22" cy="24" r="20" fill="#ffffff" opacity="0.4"/>
+    <circle cx="102" cy="82" r="26" fill="#ffffff" opacity="0.22"/>
+    <circle cx="91" cy="30" r="2.6" fill="#ffffff" opacity="0.85"/>
+    <circle cx="31" cy="95" r="2" fill="#ffffff" opacity="0.75"/>
+    <path d="M12 124c0-24 21-38 48-38s48 14 48 38z" fill="#5f8ea3"/>
+    <path d="M41 85c5 9 11 13 19 13s14-4 19-13c5 4 7 9 7 15v24H34V100c0-6 2-11 7-15z" fill="#e9f6fd"/>
+    <path d="M44 92c4 6 9 9 16 9s12-3 16-9" fill="none" stroke="#a9d3e6" stroke-width="2.2" stroke-linecap="round"/>
+    <rect x="52" y="66" width="16" height="22" rx="8" fill="#f0c4ab"/>
+    <path d="M35 57c0-20 10-33 25-33s25 13 25 33c0 9-3 16-7 21H42c-4-5-7-12-7-21z" fill="#2f4646"/>
+    <ellipse cx="60" cy="55" rx="22" ry="24" fill="#f7d8c5"/>
+    <path d="M36 53c0-17 10-26 24-26 9 0 16 4 21 12-5-3-11-4-18-4-11 0-20 5-27 18z" fill="#355050"/>
+    <path d="M73 32c6 2 9 6 8 10-4 1-8-2-12-6z" fill="#355050"/>
+    <circle cx="50" cy="57" r="7.4" fill="none" stroke="#2f4756" stroke-width="1.9"/>
+    <circle cx="70" cy="57" r="7.4" fill="none" stroke="#2f4756" stroke-width="1.9"/>
+    <path d="M57.4 56.6c1.6 0 1.6-1.4 3.2-1.4s1.6 1.4 3.2 1.4" fill="none" stroke="#2f4756" stroke-width="1.6"/>
+    <path d="M47 57.5h-4M73 57.5h4" stroke="#2f4756" stroke-width="1.6" stroke-linecap="round"/>
+    <circle cx="49.6" cy="58" r="2.2" fill="#3c5b60"/>
+    <circle cx="69.4" cy="58" r="2.2" fill="#3c5b60"/>
+    <circle cx="50.3" cy="57.2" r="0.8" fill="#ffffff"/>
+    <circle cx="70.1" cy="57.2" r="0.8" fill="#ffffff"/>
+    <path d="M56.8 67.4c2 1.8 4.4 1.8 6.4 0" fill="none" stroke="#c58a7d" stroke-width="1.8" stroke-linecap="round"/>
+    <ellipse cx="44.5" cy="65" rx="4" ry="2.4" fill="#eba998" opacity="0.4"/>
+    <ellipse cx="75.5" cy="65" rx="4" ry="2.4" fill="#eba998" opacity="0.4"/>
+    <path d="M84 27 77 44" stroke="#d9a468" stroke-width="2.6" stroke-linecap="round"/>
+    <path d="M84 27 81.6 22" stroke="#f0d8b4" stroke-width="2.6" stroke-linecap="round"/>
+  </g>
+  <circle cx="60" cy="60" r="58" fill="none" stroke="#ffffff" stroke-width="3" opacity="0.92"/>
+</svg>
