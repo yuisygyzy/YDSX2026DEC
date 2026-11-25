@@ -1,0 +1,557 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#eaf5fb">
+  <meta name="description" content="炎冬岁叙 · REPO —— 一间只在落雪时开门的小小展厅。收录冬日插画、短篇试阅、作者心语与匿名留言墙，也收下你留下的一句话。">
+  <title>炎冬岁叙 · REPO</title>
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+
+  <!-- 背景素材预留位：后续在 css/style.css 的 :root 中设置 --page-bg 即可 -->
+  <div class="page-background" aria-hidden="true"></div>
+  <div class="page-frost" aria-hidden="true"></div>
+  <canvas class="snowfall" id="snowfall" aria-hidden="true"></canvas>
+
+  <svg class="svg-sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-snow" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.35">
+        <path d="M12 2v20M3.4 7l17.2 10M20.6 7 3.4 17"/>
+        <path d="m9.5 4.5 2.5 2 2.5-2M9.5 19.5l2.5-2 2.5 2M4.7 9.5l3.1.4M19.3 14.5l-3.1-.4M4.7 14.5l3.1-.4M19.3 9.5l-3.1.4"/>
+      </g>
+    </symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24">
+      <path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/>
+    </symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24">
+      <path d="M3.5 6.5h17v11h-17zM4 7l8 6 8-6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    </symbol>
+    <symbol id="i-download" viewBox="0 0 24 24">
+      <path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5M4 20h16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"/>
+    </symbol>
+    <symbol id="i-close" viewBox="0 0 24 24">
+      <path d="m6 6 12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.6"/>
+    </symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24">
+      <path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"/>
+    </symbol>
+    <symbol id="i-file" viewBox="0 0 24 24">
+      <path d="M6 3.5h8l4 4v13H6zM14 3.5v4h4" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.4"/>
+      <path d="M9 12h6M9 15.5h6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.3"/>
+    </symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24">
+      <path d="M7 10V8a5 5 0 0 1 10 0v2M5.5 10h13v10h-13z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    </symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24">
+      <path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    </symbol>
+    <symbol id="i-check" viewBox="0 0 24 24">
+      <path d="m4.5 12.5 4.8 4.8L19.5 6.8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"/>
+    </symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24">
+      <path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.7"/>
+    </symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24">
+      <path d="M9 4h6l-1 5 3 3v2H7v-2l3-3z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+      <path d="M12 14v6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"/>
+    </symbol>
+    <symbol id="i-pen" viewBox="0 0 24 24">
+      <path d="M4 20l1-4.5L16 4.5l3.5 3.5L8.5 19zM14.5 6l3.5 3.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    </symbol>
+  </svg>
+
+  <header class="site-header" id="site-header">
+    <div class="site-header__inner">
+      <a class="brand" href="#top" aria-label="炎冬岁叙，返回顶部">
+        <span class="brand__mark"><svg class="icon" aria-hidden="true"><use href="#i-snow"></use></svg></span>
+        <span class="brand__text">炎冬岁叙<small>WINTER REPO</small></span>
+      </a>
+
+      <nav class="site-nav" id="site-nav" aria-label="主导航">
+        <a href="#archive"><span>壹</span>展品</a>
+        <a href="#reading"><span>贰</span>试阅</a>
+        <a href="#freetalk"><span>叁</span>心语</a>
+        <a href="#letter"><span>肆</span>来信</a>
+        <a href="#wall"><span>伍</span>留言墙</a>
+      </nav>
+
+      <a class="header-letter" href="#letter">
+        <svg class="icon" aria-hidden="true"><use href="#i-mail"></use></svg>
+        <span>写一封信</span>
+      </a>
+
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="打开导航">
+        <svg class="icon nav-toggle__open" aria-hidden="true"><use href="#i-menu"></use></svg>
+        <svg class="icon nav-toggle__close" aria-hidden="true"><use href="#i-close"></use></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ===================== HERO ===================== -->
+    <section class="hero" id="top">
+      <div class="hero__ornament" aria-hidden="true">
+        <svg class="hero__flake"><use href="#i-snow"></use></svg>
+        <span class="hero__dot hero__dot--one"></span>
+        <span class="hero__dot hero__dot--two"></span>
+      </div>
+
+      <div class="hero__inner shell">
+        <div class="hero__copy">
+          <p class="eyebrow hero__eyebrow" data-reveal>
+            <span class="eyebrow__line"></span>
+            REPO / WINTER ANTHOLOGY · 2026
+          </p>
+
+          <h1 class="hero__title" data-reveal>
+            <span>炎冬</span>
+            <span class="hero__title-second">岁叙<i class="title-dot">。</i></span>
+          </h1>
+
+          <p class="hero__lede" data-reveal>雪落在岁末，故事在纸上生温。</p>
+
+          <p class="hero__desc" data-reveal>
+            一间只在落雪时开门的小小展厅。<br>
+            收录插画、短篇与未寄出的冬日来信，<br class="desktop-break">
+            也收下你路过时留下的一句话。
+          </p>
+
+          <div class="hero__actions" data-reveal>
+            <a class="button button--primary" href="#archive">
+              <span>翻阅展品</span>
+              <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg>
+            </a>
+            <a class="button button--ghost" href="#wall">去留言墙留一句</a>
+          </div>
+
+          <dl class="hero__meta" data-reveal>
+            <div>
+              <dt>ISSUE</dt>
+              <dd>01 <span>/ 冬日试刊</span></dd>
+            </div>
+            <div>
+              <dt>PLACE</dt>
+              <dd>雪落玉门</dd>
+            </div>
+            <div>
+              <dt>YEAR</dt>
+              <dd>2026</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="hero__visual" data-reveal>
+          <div class="poster-back" aria-hidden="true">
+            <span class="poster-back__label">SNOW<br>LETTERS</span>
+            <span class="poster-back__year">二〇二六</span>
+            <span class="poster-back__line"></span>
+          </div>
+
+          <figure class="poster">
+            <span class="poster__tape" aria-hidden="true"></span>
+            <div class="poster__top">
+              <span>WINTER / 01</span>
+              <span class="poster__badge">示例素材</span>
+            </div>
+            <div class="poster__image">
+              <img src="img/sample-cover.jpg" alt="冬日主题插画封面预览，示例素材" width="575" height="693">
+            </div>
+            <figcaption class="poster__bottom">
+              <span>炎冬岁叙</span>
+              <span>封面预览 · 待替换</span>
+            </figcaption>
+          </figure>
+
+          <div class="hero__seal" aria-hidden="true">
+            <svg viewBox="0 0 120 120">
+              <defs>
+                <path id="seal-path" d="M60,60 m-43,0 a43,43 0 1,1 86,0 a43,43 0 1,1 -86,0"></path>
+              </defs>
+              <text>
+                <textPath href="#seal-path" startOffset="0">SNOW · LETTERS · REPO · WINTER · </textPath>
+              </text>
+              <g class="hero__seal-flake"><use href="#i-snow" x="46" y="46" width="28" height="28"></use></g>
+            </svg>
+          </div>
+
+          <p class="hero__note">
+            <span>“</span>雪落有信，见字如面。<span>”</span>
+          </p>
+        </div>
+      </div>
+
+      <a class="scroll-cue" href="#archive" aria-label="向下浏览展品">
+        <span>SCROLL</span>
+        <i aria-hidden="true"></i>
+      </a>
+    </section>
+
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker__track">
+        <span>岁寒，然后知松柏之后凋也</span><i>✦</i>
+        <span>雪落无声 · 见字如面</span><i>✦</i>
+        <span>作者心语 · 留言墙</span><i>✦</i>
+        <span>岁寒，然后知松柏之后凋也</span><i>✦</i>
+        <span>雪落无声 · 见字如面</span><i>✦</i>
+        <span>作者心语 · 留言墙</span><i>✦</i>
+      </div>
+    </div>
+
+    <!-- ===================== ARCHIVE ===================== -->
+    <section class="section archive" id="archive">
+      <div class="shell">
+        <div class="section-heading" data-reveal>
+          <div class="section-heading__title">
+            <p class="eyebrow"><span class="eyebrow__line"></span>01 / THE COLLECTION</p>
+            <h2>落雪成展<span>.</span></h2>
+          </div>
+          <p class="section-heading__desc">
+            四件与冬天有关的展品。图像暂以示例素材代替，位置已经为正式稿件留好。
+          </p>
+        </div>
+
+        <div class="delivery-note" id="delivery-note" hidden>
+          <span class="delivery-note__icon"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg></span>
+          <div>
+            <strong>信已抵达。</strong>
+            <p>你的留言已寄往站长信箱。就着这场雪，慢慢看展吧。</p>
+          </div>
+        </div>
+
+        <div class="gallery" id="gallery" aria-live="polite"></div>
+
+        <div class="gallery-placeholder" data-reveal>
+          <span class="gallery-placeholder__flake" aria-hidden="true"><svg class="icon"><use href="#i-snow"></use></svg></span>
+          <div>
+            <strong>下一件展品，正在路上</strong>
+            <p>此处预留素材位置。后续图片可放入 <code>img/</code> 文件夹，并在 <code>js/config.js</code> 中补充条目。</p>
+          </div>
+          <span class="gallery-placeholder__tag">COMING SOON</span>
+        </div>
+
+        <noscript>
+          <p class="noscript-note">展品与文件列表需要启用 JavaScript 才能显示。你也可以直接打开 <code>img/</code> 与 <code>txt/</code> 文件夹浏览素材。</p>
+        </noscript>
+      </div>
+    </section>
+
+    <!-- ===================== READING ===================== -->
+    <section class="section reading" id="reading">
+      <div class="shell">
+        <div class="section-heading" data-reveal>
+          <div class="section-heading__title">
+            <p class="eyebrow"><span class="eyebrow__line"></span>02 / A PREVIEW</p>
+            <h2>展卷，听雪<span>.</span></h2>
+          </div>
+          <p class="section-heading__desc">
+            先读一小段故事，再决定要不要把整个冬天带走。
+          </p>
+        </div>
+
+        <div class="reading__grid">
+          <article class="paper" data-reveal>
+            <span class="paper__tape" aria-hidden="true"></span>
+            <div class="paper__head">
+              <span>试阅 / EXCERPT</span>
+              <span class="paper__seal">谈春</span>
+            </div>
+
+            <div class="prose" id="excerpt"></div>
+
+            <div class="paper__foot">
+              <p>节选自《谈春》· 完整文本见下方文件</p>
+              <button class="text-button" id="excerpt-toggle" type="button" aria-expanded="false" aria-controls="excerpt">
+                <span>继续展卷</span>
+                <svg class="icon" aria-hidden="true"><use href="#i-chevron"></use></svg>
+              </button>
+            </div>
+          </article>
+
+          <aside class="files" data-reveal>
+            <div class="files__heading">
+              <div>
+                <span class="eyebrow">FILES / 文件</span>
+                <h3>可下载的冬日</h3>
+              </div>
+              <span class="files__count">02</span>
+            </div>
+
+            <div class="file-list" id="file-list"></div>
+
+            <p class="files__hint">
+              <svg class="icon" aria-hidden="true"><use href="#i-lock"></use></svg>
+              以上为示例文件，正式文本与素材将替换 <code>txt/</code> 文件夹中的内容。
+            </p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FREETALK ===================== -->
+    <section class="section freetalk" id="freetalk">
+      <div class="freetalk__glow" aria-hidden="true"></div>
+      <div class="shell">
+        <div class="section-heading" data-reveal>
+          <div class="section-heading__title">
+            <p class="eyebrow"><span class="eyebrow__line"></span>03 / FREETALK</p>
+            <h2>作者先说两句<span>.</span></h2>
+          </div>
+          <p class="section-heading__desc" id="freetalk-intro">
+            交稿之后，五位作者又被拉住，小声补充了几句。
+          </p>
+        </div>
+
+        <div class="talk-grid" id="talk-grid"></div>
+
+        <p class="freetalk__foot" data-reveal>
+          <span>看完作者的话，也去看看大家贴的便利贴。</span>
+          <a href="#wall">前往留言墙 <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ===================== LETTER ===================== -->
+    <section class="section letter" id="letter">
+      <div class="letter__glow" aria-hidden="true"></div>
+      <div class="shell letter__grid">
+        <div class="letter__copy" data-reveal>
+          <p class="eyebrow"><span class="eyebrow__line"></span>04 / A LETTER TO THE AUTHORS</p>
+          <h2>有些话，<br>只写给作者<span>。</span></h2>
+          <p class="letter__desc">
+            公开的留言贴到墙上，想私下说的，就写在这里。<br class="desktop-break">
+            不一定有回信，但每一封都会被认真读完。
+          </p>
+
+          <div class="letter__destination">
+            <span class="letter__destination-icon"><svg class="icon" aria-hidden="true"><use href="#i-mail"></use></svg></span>
+            <div>
+              <span>这封信将寄往</span>
+              <strong>作者信箱</strong>
+            </div>
+          </div>
+
+          <ul class="letter__tips">
+            <li><span>01</span>这封信通过 PostMail 直接送达作者信箱，不需要注册。</li>
+            <li><span>02</span>寄出成功后页面会自动刷新，并带你回到展品区。</li>
+            <li><span>03</span>如果愿意，留下回信邮箱，让这封信有来有往。</li>
+          </ul>
+        </div>
+
+        <div class="letter__card" data-reveal>
+          <div class="letter__card-head">
+            <div>
+              <span class="letter__card-kicker">A LETTER TO THE AUTHORS</span>
+              <h3>写给作者的信</h3>
+            </div>
+            <span class="letter__stamp" aria-hidden="true"><svg class="icon"><use href="#i-snow"></use></svg></span>
+          </div>
+
+          <form id="postmail-form" class="letter-form" action="https://postmail.invotes.com/send" method="post" accept-charset="UTF-8">
+            <div class="field-row">
+              <label class="field">
+                <span class="field__label">怎么称呼你 <em>选填</em></span>
+                <input type="text" name="name" maxlength="40" autocomplete="name" placeholder="一位路过的旅人">
+              </label>
+
+              <label class="field">
+                <span class="field__label">回信邮箱 <em>选填</em></span>
+                <input type="email" name="email" maxlength="120" autocomplete="email" placeholder="you@example.com">
+              </label>
+            </div>
+
+            <label class="field field--full">
+              <span class="field__label">想说的话 <em>必填</em></span>
+              <textarea id="message" name="message" rows="5" maxlength="800" required placeholder="雪落下来的时候，我想起……"></textarea>
+              <span class="field__counter"><span id="char-count">0</span> / 800</span>
+            </label>
+
+            <input type="hidden" name="text" id="mail-text">
+            <input type="hidden" name="subject" value="【炎冬岁叙 · REPO】新的冬日留言">
+            <input type="hidden" name="access_token" value="0emv4dw5qew9ocwrto69y9wd">
+            <input type="hidden" name="success_url" id="success-url" value="./?sent=1#archive">
+            <input type="hidden" name="error_url" id="error-url" value="./?err=1#letter">
+
+            <div class="form-trap" aria-hidden="true">
+              <label>请勿填写<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+            </div>
+
+            <div class="form-status" id="form-status" role="alert" hidden></div>
+
+            <button class="button button--send" id="send-button" type="submit">
+              <span class="button--send__label">寄出这封信</span>
+              <span class="button--send__icon"><svg class="icon" aria-hidden="true"><use href="#i-mail"></use></svg></span>
+            </button>
+
+            <p class="form-footnote">
+              <svg class="icon" aria-hidden="true"><use href="#i-lock"></use></svg>
+              这封信会送到作者信箱，不会用于其他用途。
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== WALL ===================== -->
+    <section class="section wall" id="wall">
+      <div class="wall__glow" aria-hidden="true"></div>
+      <div class="shell">
+        <div class="section-heading" data-reveal>
+          <div class="section-heading__title">
+            <p class="eyebrow"><span class="eyebrow__line"></span>05 / THE GUESTBOOK</p>
+            <h2>都贴在墙上<span>.</span></h2>
+          </div>
+          <p class="section-heading__desc">
+            匿名的、署名的、路过的。写下的话不寄给谁，只留在这面深蓝色的毛毡板上。
+          </p>
+        </div>
+
+        <div class="board" data-reveal>
+          <div class="board__head">
+            <div class="board__title">
+              <span class="board__kicker">ANONYMOUS MESSAGE BOARD</span>
+              <h3>匿名留言墙<em>NO.05</em></h3>
+            </div>
+            <div class="board__tools">
+              <span class="board__count"><strong id="wall-count">10</strong> 张便利贴</span>
+              <button class="wall-cta" id="wall-open" type="button">
+                <span class="wall-cta__icon"><svg class="icon" aria-hidden="true"><use href="#i-pen"></use></svg></span>
+                <span>我也要留言</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="board__notes" id="wall-notes" aria-label="读者留言"></div>
+        </div>
+
+        <p class="wall__hint" data-reveal>
+          <svg class="icon" aria-hidden="true"><use href="#i-lock"></use></svg>
+          留言会立刻贴到墙上，并保存在你自己的浏览器里。刷新或下次再来，它们还在。
+        </p>
+
+        <noscript>
+          <p class="wall__hint">留言墙需要启用 JavaScript 才能显示与发布留言。</p>
+        </noscript>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="shell">
+      <div class="footer__top">
+        <p class="footer__line">雪落有信，<br>见字如面<span>。</span></p>
+        <div class="footer__nav">
+          <a href="#archive">展品 <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+          <a href="#reading">试阅 <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+          <a href="#freetalk">心语 <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+          <a href="#letter">来信 <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+          <a href="#wall">留言墙 <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+          <a href="#top">回到顶部 <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p>© 2026 炎冬岁叙 · REPO / DEMO EDITION</p>
+        <p>素材为示例内容，正式背景与图文待补 · Powered by PostMail</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden>
+    <span class="toast__icon" id="toast-icon"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg></span>
+    <div class="toast__body">
+      <strong id="toast-title">信已寄出</strong>
+      <p id="toast-text">谢谢你的回声。</p>
+    </div>
+    <button class="toast__close" id="toast-close" type="button" aria-label="关闭提示">
+      <svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg>
+    </button>
+  </div>
+
+  <dialog class="lightbox" id="lightbox" aria-labelledby="lightbox-title">
+    <div class="lightbox__panel">
+      <button class="lightbox__close" id="lightbox-close" type="button" aria-label="关闭大图">
+        <svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg>
+      </button>
+      <div class="lightbox__image-wrap">
+        <img id="lightbox-image" src="" alt="">
+      </div>
+      <div class="lightbox__caption">
+        <span id="lightbox-tag"></span>
+        <h3 id="lightbox-title"></h3>
+        <p id="lightbox-desc"></p>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="composer" id="composer" aria-labelledby="composer-title">
+    <div class="composer__panel">
+      <div class="composer__head">
+        <div>
+          <span class="composer__kicker">LEAVE A NOTE</span>
+          <h3 id="composer-title">贴一张便利贴</h3>
+        </div>
+        <button class="composer__close" id="composer-close" type="button" aria-label="关闭留言框">
+          <svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg>
+        </button>
+      </div>
+
+      <form class="composer__form" id="composer-form" novalidate>
+        <label class="field field--full" for="composer-text">
+          <span class="field__label">想写的话 <em>必填 · 最多 120 字</em></span>
+          <textarea id="composer-text" name="message" rows="4" maxlength="120" required placeholder="雪落下来的时候，我想起……"></textarea>
+          <span class="field__counter"><span id="composer-count">0</span> / 120</span>
+        </label>
+
+        <label class="field field--full" for="composer-name">
+          <span class="field__label">署名 <em>选填 · 不填就是匿名</em></span>
+          <input id="composer-name" name="name" type="text" maxlength="16" autocomplete="nickname" placeholder="匿名的旅人">
+        </label>
+
+        <fieldset class="swatches">
+          <legend class="swatches__legend">便利贴颜色</legend>
+          <div class="swatches__row">
+            <label class="swatch">
+              <input type="radio" name="color" value="snow" checked>
+              <span class="swatch__paper swatch__paper--snow" aria-hidden="true"></span>
+              <span class="swatch__label">雪白</span>
+            </label>
+            <label class="swatch">
+              <input type="radio" name="color" value="ice">
+              <span class="swatch__paper swatch__paper--ice" aria-hidden="true"></span>
+              <span class="swatch__label">霜蓝</span>
+            </label>
+            <label class="swatch">
+              <input type="radio" name="color" value="sky">
+              <span class="swatch__paper swatch__paper--sky" aria-hidden="true"></span>
+              <span class="swatch__label">浅天蓝</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <p class="composer__status" id="composer-status" role="alert" hidden></p>
+
+        <div class="composer__actions">
+          <button class="button button--ghost" id="composer-cancel" type="button">再想想</button>
+          <button class="button button--primary" id="composer-submit" type="submit">
+            <span>贴到墙上</span>
+            <svg class="icon" aria-hidden="true"><use href="#i-pin"></use></svg>
+          </button>
+        </div>
+
+        <p class="composer__foot">
+          <svg class="icon" aria-hidden="true"><use href="#i-lock"></use></svg>
+          留言只保存在你的浏览器里，不会上传到服务器。
+        </p>
+      </form>
+    </div>
+  </dialog>
+
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
